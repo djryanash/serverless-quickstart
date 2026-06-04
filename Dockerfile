@@ -3,7 +3,10 @@ FROM python:3.10-slim
 WORKDIR /
 
 # Install dependencies
-RUN pip install --no-cache-dir runpod
+RUN pip install --no-cache-dir runpod vllm transformers
+
+# Create directory for model cache
+RUN mkdir -p /root/.cache/huggingface
 
 # Copy your handler file
 COPY handler.py /
